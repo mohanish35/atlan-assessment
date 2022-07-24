@@ -6,36 +6,20 @@
       dark
     />
     <VMain>
-      <VContainer >
-        <VBtn
-          color="success"
-          class="ma-2 white--text"
-          @click="downloadFile"
-        >
-          Download
-          <VIcon
-            right
-            dark
-          >
-            mdi-cloud-download
-          </VIcon>
-        </VBtn>
-        <DataTable />
-      </VContainer>
+    <VContainer >
+      <ControlBtns />
+      <DataTable />
+    </VContainer>
     </VMain>
   </VApp>
 </template>
 
 <script>
-import DataTable from '../src/components/data-table.vue'
+import DataTable from '../src/components/DataTable.vue'
+import ControlBtns from '../src/components/control-btns/ControlBtns'
 
 export default {
   name: 'App',
-  methods: {
-    downloadFile () {
-      console.log("Error")
-    }
-  },
-  components: { DataTable }
+  components: { DataTable, ControlBtns }
 };
 </script>
