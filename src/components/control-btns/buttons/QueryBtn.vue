@@ -24,14 +24,16 @@
             autocomplete="query"
             v-model="queryText"
             :disabled="loading"
+            autofocus
+            @keydown.enter="onEnterPress"
           ></VTextarea>
           <FireBtn 
-            :query-text="queryText" 
+            :query-text="queryText.trim()" 
             :loading="loading"
-            @fire-query="fireQuery"
+            @fire-query="target.blur(); this.fireQuery()"
           />
           <CopyBtn
-            :query-text="queryText"
+            :query-text="queryText.trim()"
             :loading="loading"
           />
           <ClearBtn
@@ -65,12 +67,17 @@ export default {
     ClearBtn
   },
   methods: {
-    ...mapActions(['setRandomItems']),
+    onEnterPress ({ shiftKey }) {
+      if (this.queryText.trim().length && !shiftKey) {
+        this.fireQuery()
+      }
+    },
+    ...mapActions(['applyQuery']),
     fireQuery () {
       this.loading = !this.loading
 
       setTimeout(() => {
-        this.setRandomItems()
+        this.applyQuery()
         this.loading = false
         this.sheet = false
         this.queryText = ''

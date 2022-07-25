@@ -9,7 +9,7 @@
       <VBtn
         id="download-btn"
         color="success"
-        class="ma-2 white--text"
+        class="white--text"
         v-bind="attrs"
         v-on="on"
       >

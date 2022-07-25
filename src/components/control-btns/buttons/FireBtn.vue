@@ -2,7 +2,7 @@
   <VBtn
     class="mr-2"
     :loading="loading"
-    :disabled="loading || queryText === ''"
+    :disabled="loading || !queryText.length"
     color="primary"
     @click="$emit('fire-query')"
   >

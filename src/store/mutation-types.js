@@ -1,1 +1,2 @@
 export const SET_ITEMS = 'SET_ITEMS'
+export const TOGGLE_QUERY_APPLIED = 'TOGGLE_QUERY_APPLIED'

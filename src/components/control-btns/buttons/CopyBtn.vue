@@ -30,10 +30,10 @@ export default {
   },
   computed: {
     disableCopyToClipboard () {
-      return this.queryText === "" || this.copiedText === this.queryText
+      return !this.queryText.length || this.copiedText === this.queryText
     },
     currentQueryCopied () {
-      return this.queryText !== "" && this.copiedText === this.queryText
+      return this.queryText.length && this.copiedText === this.queryText
     }
   },
   props: {

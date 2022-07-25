@@ -2,7 +2,7 @@
   <VBtn
     color="error"
     @click="$emit('clear-query')"
-    :disabled="queryText === '' || loading"
+    :disabled="!queryText.length || loading"
   >
     Clear
     <VIcon

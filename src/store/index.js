@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { SET_ITEMS } from './mutation-types'
+import { SET_ITEMS, TOGGLE_QUERY_APPLIED } from './mutation-types'
 import { extractHeadersFromJson } from '../util/parsers'
 import pokemonJsonData from '../assets/data-source/pokemon'
 
@@ -11,7 +11,8 @@ const store = new Vuex.Store({
   state: {
     itemsToDisplay: [],
     items: [],
-    headers: []
+    headers: [],
+    queryApplied: false
   },
   getters: {
   },
@@ -23,9 +24,20 @@ const store = new Vuex.Store({
         state.items = items
         state.headers = extractHeadersFromJson(items)
       }
+    },
+    [TOGGLE_QUERY_APPLIED]: (state) => {
+      state.queryApplied = !state.queryApplied
     }
   },
   actions: {
+    applyQuery({ dispatch, commit }) {
+      dispatch('setRandomItems')
+      commit('TOGGLE_QUERY_APPLIED')
+    },
+    resetQuery ({ commit, state }) {
+      commit('TOGGLE_QUERY_APPLIED')
+      commit('SET_ITEMS', { items: state.items })
+    },
     setRandomItems ({ commit, state }) {
       const resultantItems = []
       
@@ -40,8 +52,6 @@ const store = new Vuex.Store({
 
       commit(SET_ITEMS, { items: resultantItems })
     }
-  },
-  modules: {
   }
 })
 
