@@ -72,6 +72,8 @@ const store = new Vuex.Store({
   },
 })
 
+
+
 store.commit(SET_ITEMS, { items: pokemonJsonData, areDefaultItems: true })
 store.commit(SYNC_QUERY_HISTORY)
 

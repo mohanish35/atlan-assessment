@@ -24,7 +24,7 @@ import ResetQueryBtn from './buttons/ResetQueryBtn.vue'
 import ShowHistoryBtn from './buttons/ShowHistoryBtn.vue'
 
 export default {
-  name: 'ControlBtns',
+  name: 'ControlBtnsContainer',
   components: { 
     QueryBtn, 
     DownloadBtn, 
