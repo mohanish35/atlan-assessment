@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-8">
     <QueryBtn />
     <DownloadBtn />
   </div>

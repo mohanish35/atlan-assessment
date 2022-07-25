@@ -4,15 +4,14 @@
     :loading="loading"
     :disabled="loading || queryText === ''"
     color="primary"
-    @click="this.$emit('fire-query')"
+    @click="$emit('fire-query')"
   >
     Fire
     <VIcon
       right
       dark
-    >
-      mdi-fire
-    </VIcon>
+      v-text="'mdi-fire'"
+    />
   </VBtn>
 </template>
 

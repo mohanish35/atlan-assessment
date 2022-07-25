@@ -2,15 +2,14 @@
   <VBtn
     color="error"
     @click="$emit('clear-query')"
-    :disabled="queryText === ''"
+    :disabled="queryText === '' || loading"
   >
     Clear
     <VIcon
       right
       dark
-    >
-      mdi-close
-    </VIcon>
+      v-text="'mdi-close'"
+    />
   </VBtn>
 </template>
 
@@ -20,6 +19,9 @@ export default {
   props: {
     queryText: {
       default: ''
+    },
+    loading: {
+      default: true
     }
   }
 }

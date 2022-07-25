@@ -2,7 +2,7 @@ import csvDownload from 'json-to-csv-export'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
 
-export const downloaJsonInCsv = (jsonData) => {
+export const downloadJsonInCsv = (jsonData) => {
   csvDownload(jsonData, 'data.csv')
 }
 

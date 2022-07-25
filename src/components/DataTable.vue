@@ -3,7 +3,7 @@
     <VCardTitle>
       <VRow>
         <VCol>
-          Pokemon
+          Pokedex
         </VCol>
         <VCol class="col-3">
           <VSpacer />

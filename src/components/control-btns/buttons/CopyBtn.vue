@@ -3,15 +3,14 @@
     class="mr-2"
     color="success"
     @click="copyQueryToClipboard"
-    :disabled="disableCopyToClipboard"
+    :disabled="disableCopyToClipboard || loading"
   >
     {{ currentQueryCopied ? 'Copied' : 'Copy' }}
     <VIcon
       right
       dark
-    >
-      {{ currentQueryCopied ? 'mdi-check-all' : 'mdi-clipboard-multiple-outline' }}
-    </VIcon>
+      v-text="currentQueryCopied ? 'mdi-check-all' : 'mdi-clipboard-multiple-outline'"
+    />
   </VBtn>
 </template>
 
@@ -40,6 +39,9 @@ export default {
   props: {
     queryText: {
       default: ''
+    },
+    loading: {
+      default: false
     }
   }
 }

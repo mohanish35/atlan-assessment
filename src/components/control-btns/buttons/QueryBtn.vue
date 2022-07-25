@@ -11,9 +11,8 @@
           <VIcon
             right
             dark
-          >
-            mdi-database-edit
-          </VIcon>
+            v-text="'mdi-database-edit'"
+          />
         </VBtn>
       </template>
       <VList>
@@ -24,6 +23,7 @@
           <VTextarea
             autocomplete="query"
             v-model="queryText"
+            :disabled="loading"
           ></VTextarea>
           <FireBtn 
             :query-text="queryText" 
@@ -32,10 +32,12 @@
           />
           <CopyBtn
             :query-text="queryText"
+            :loading="loading"
           />
           <ClearBtn
             :query-text="queryText"
             @clear-query="queryText = ''"
+            :loading="loading"
           />
         </VContainer>
       </VList>
@@ -71,6 +73,7 @@ export default {
         this.setRandomItems()
         this.loading = false
         this.sheet = false
+        this.queryText = ''
       }, 2000)
     }
   }

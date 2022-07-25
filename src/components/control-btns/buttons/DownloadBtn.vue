@@ -7,6 +7,7 @@
   >
     <template v-slot:activator="{ on, attrs }">
       <VBtn
+        id="download-btn"
         color="success"
         class="ma-2 white--text"
         v-bind="attrs"
@@ -16,24 +17,32 @@
         <VIcon
           right
           dark
-        >
-          mdi-cloud-download
-        </VIcon>
+          v-text="'mdi-cloud-download'"
+        />
       </VBtn>
     </template>
-
-    <VList>
-      <VListItem
-        v-for="(format, index) in formats"
-        :key="index"
-      >
-        <VListItemTitle 
-          @click="downloadFile(format)"
-        >
-          {{ format }}
-        </VListItemTitle>
-      </VListItem>
-    </VList>
+    <VCard
+      class="mx-auto"
+      max-width="500"
+    >
+      <VList>
+        <VListItemGroup>
+          <VListItem
+            v-for="(format, i) in formats"
+            :key="i"
+            @click="downloadFile(format.name)"
+            v-model="selectedFormat"
+          >
+            <VListItemIcon>
+              <VIcon v-text="format.icon" />
+            </VListItemIcon>
+            <VListItemContent>
+              <VListItemTitle v-text="format.name"></VListItemTitle>
+            </VListItemContent>
+          </VListItem>
+        </VListItemGroup>
+      </VList>
+    </VCard>
   </VMenu>
 </template>
 
@@ -44,7 +53,17 @@ import { downloadJsonInJson, downloadJsonInPdf, downloadJsonInCsv } from '../../
 export default {
   name: 'DownloadBtn',
   data: () => ({
-      formats: ['PDF', 'CSV', 'JSON'],
+    formats: [{ 
+      name: 'PDF', 
+      icon: 'mdi-file-pdf-box'
+    }, { 
+      name: 'CSV', 
+      icon: 'mdi-comma-box' 
+    }, {
+      name: 'JSON', 
+      icon: 'mdi-code-braces-box' 
+    }],
+    selectedFormat: true
   }),
   methods: {
     downloadFile (format) {
@@ -58,6 +77,8 @@ export default {
         case 'JSON':
           downloadJsonInJson(this.itemsToDisplay)
       }
+
+      this.selectedFormat = true
     }
   },
   computed: {
@@ -65,3 +86,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  #download-btn {
+    cursor: inherit;
+  }
+</style>
