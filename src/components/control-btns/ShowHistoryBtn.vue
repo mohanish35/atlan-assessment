@@ -45,7 +45,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import HistoryActionsContainer from '../../HistoryActionsContainer.vue'
+import HistoryActionsContainer from '../HistoryActionsContainer.vue'
 
 export default {
   name: 'ShowHistory',

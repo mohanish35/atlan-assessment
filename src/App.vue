@@ -15,7 +15,7 @@
 
 <script>
 import DataTable from '../src/components/DataTable.vue'
-import ControlBtnsContainer from '../src/components/control-btns/ControlBtnsContainer.vue'
+import ControlBtnsContainer from '../src/components/ControlBtnsContainer.vue'
 import FooterContainer from './components/layout/FooterContainer.vue'
 import HeaderContainer from './components/layout/HeaderContainer.vue'
 import ScrollToTopBtn from './components/layout/ScrollToTopBtn.vue'

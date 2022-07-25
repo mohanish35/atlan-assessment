@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import QueryBtn from './buttons/QueryBtn.vue'
-import DownloadBtn from './buttons/DownloadBtn.vue'
-import ResetQueryBtn from './buttons/ResetQueryBtn.vue'
-import ShowHistoryBtn from './buttons/ShowHistoryBtn.vue'
+import QueryBtn from './control-btns/QueryBtn.vue'
+import DownloadBtn from './control-btns/DownloadBtn.vue'
+import ResetQueryBtn from './control-btns/ResetQueryBtn.vue'
+import ShowHistoryBtn from './control-btns/ShowHistoryBtn.vue'
 
 export default {
   name: 'ControlBtnsContainer',

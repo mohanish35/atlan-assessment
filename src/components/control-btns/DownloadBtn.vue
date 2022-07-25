@@ -48,7 +48,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { downloadJsonInJson, downloadJsonInPdf, downloadJsonInCsv } from '../../../util/downloaders'
+import { downloadJsonInJson, downloadJsonInPdf, downloadJsonInCsv } from '../../util/downloaders'
 
 export default {
   name: 'DownloadBtn',
