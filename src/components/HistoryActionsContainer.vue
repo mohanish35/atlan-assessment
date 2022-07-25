@@ -7,7 +7,7 @@
       />
     </VCol>
     <VCol class='control-col'>
-      <CopyHistoricalQuery :query-text="query.text" />
+      <CopyHistoricalQuery @query-copied="$emit('query-copied')" :query-text="query.text" />
     </VCol>
     <VCol class='control-col'>
       <DeleteHistoricalQuery :query="query" />

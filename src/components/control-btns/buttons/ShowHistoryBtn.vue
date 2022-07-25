@@ -25,7 +25,7 @@
                   <td>{{ query.text }}</td>
                   <td>{{ query.executedAt }}</td>
                   <td>
-                    <HistoryActionsContainer :query="query" @fire-query="dialog = false" />
+                    <HistoryActionsContainer :query="query" @query-copied="closeDialogBox" @fire-query="closeDialogBox" />
                   </td>
                 </tr>
               </tbody>
@@ -34,7 +34,7 @@
         </VCardText>
         <VDivider></VDivider>
         <VCardActions>
-          <VBtn color="blue darken-1" text @click="dialog = false">
+          <VBtn color="blue darken-1" text @click="closeDialogBox">
             Close
           </VBtn>
         </VCardActions>
@@ -50,6 +50,11 @@ import HistoryActionsContainer from '../../HistoryActionsContainer.vue'
 export default {
   name: 'ShowHistory',
   components: { HistoryActionsContainer },
+  methods: {
+    closeDialogBox() {
+      this.dialog = false
+    }
+  },
   data: () => ({
     dialog: false,
     headers: ['Query', 'ExecutedAt', 'Actions'],

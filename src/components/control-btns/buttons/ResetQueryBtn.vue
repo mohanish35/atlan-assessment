@@ -3,6 +3,7 @@
     color="error"
     :disabled="!queryApplied"
     @click="resetAppliedQuery"
+    outlined
   >
     Reset Query
     <VIcon

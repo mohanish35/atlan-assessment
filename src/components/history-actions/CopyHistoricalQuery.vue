@@ -4,7 +4,7 @@
       <VBtn 
         v-on="on" 
         v-bind="attrs" 
-        dark x-small color="pink"
+        dark x-small color="success"
         @click="copyQuery"
       >
         <VIcon dark v-text="'mdi-clipboard-multiple-outline'" />
@@ -21,6 +21,7 @@ export default {
   name: 'CopyHistoricalQuery',
   methods: {
     copyQuery () {
+      this.$emit('query-copied')
       copyToClipboard(this.queryText)
     }
   },

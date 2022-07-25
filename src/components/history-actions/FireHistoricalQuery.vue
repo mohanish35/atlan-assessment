@@ -6,7 +6,7 @@
         v-bind="attrs" 
         dark 
         x-small 
-        color="pink"
+        color="primary"
         @click="fireQuery"
       >
         <VIcon dark v-text="'mdi-fire'" />
