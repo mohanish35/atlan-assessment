@@ -2,7 +2,7 @@
   <VBtn
     color="error"
     :disabled="!queryApplied"
-    @click="resetQuery"
+    @click="resetAppliedQuery"
   >
     Reset Query
     <VIcon
@@ -19,7 +19,7 @@ import { mapState, mapActions } from 'vuex';
 export default {
   name: 'ResetQueryBtn',
   methods: {
-    ...mapActions(['resetQuery'])
+    ...mapActions(['resetAppliedQuery'])
   },
   computed: {
     ...mapState(['queryApplied'])

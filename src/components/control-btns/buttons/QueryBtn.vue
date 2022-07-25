@@ -30,7 +30,7 @@
           <FireBtn 
             :query-text="queryText.trim()" 
             :loading="loading"
-            @fire-query="target.blur(); this.fireQuery()"
+            @fire-query="this.fireQuery"
           />
           <CopyBtn
             :query-text="queryText.trim()"
@@ -77,7 +77,7 @@ export default {
       this.loading = !this.loading
 
       setTimeout(() => {
-        this.applyQuery()
+        this.applyQuery({ query: this.queryText })
         this.loading = false
         this.sheet = false
         this.queryText = ''
