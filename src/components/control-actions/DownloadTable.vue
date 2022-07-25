@@ -51,7 +51,7 @@ import { mapState } from 'vuex'
 import { downloadJsonInJson, downloadJsonInPdf, downloadJsonInCsv } from '../../util/downloaders'
 
 export default {
-  name: 'DownloadBtn',
+  name: 'DownloadTable',
   data: () => ({
     formats: [{ 
       name: 'PDF', 

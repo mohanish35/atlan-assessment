@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'FireBtn',
+  name: 'FireQuery',
   props: {
     loading: {
       default: false

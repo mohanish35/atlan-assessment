@@ -4,7 +4,7 @@
     <HeroBanner />
     <VMain>
       <VContainer >
-        <ControlBtnsContainer />
+        <ControlActionsContainer />
         <DataTable />
       </VContainer>
     </VMain>
@@ -15,7 +15,7 @@
 
 <script>
 import DataTable from '../src/components/DataTable.vue'
-import ControlBtnsContainer from '../src/components/ControlBtnsContainer.vue'
+import ControlActionsContainer from './components/ControlActionsContainer.vue'
 import FooterContainer from './components/layout/FooterContainer.vue'
 import HeaderContainer from './components/layout/HeaderContainer.vue'
 import ScrollToTopBtn from './components/layout/ScrollToTopBtn.vue'
@@ -28,7 +28,7 @@ export default {
   }),
   components: { 
     DataTable, 
-    ControlBtnsContainer, 
+    ControlActionsContainer, 
     FooterContainer, 
     HeaderContainer,
     ScrollToTopBtn,

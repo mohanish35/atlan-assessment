@@ -18,7 +18,7 @@
 import copyToClipboard from 'copy-to-clipboard'
 
 export default {
-  name: 'CopyBtn',
+  name: 'CopyQuery',
   data: () => ({
     copiedText: ''
   }),

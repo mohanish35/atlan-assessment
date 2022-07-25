@@ -27,16 +27,16 @@
             autofocus
             @keydown.enter="onEnterPress"
           ></VTextarea>
-          <FireBtn 
+          <FireQuery 
             :query-text="queryText.trim()" 
             :loading="loading"
             @fire-query="this.fireQuery"
           />
-          <CopyBtn
+          <CopyQuery
             :query-text="queryText.trim()"
             :loading="loading"
           />
-          <ClearBtn
+          <ClearQuery
             :query-text="queryText"
             @clear-query="queryText = ''"
             :loading="loading"
@@ -50,21 +50,21 @@
 <script>
 import { mapActions } from 'vuex'
 
-import FireBtn from './FireBtn.vue'
-import CopyBtn from './CopyBtn.vue'
-import ClearBtn from './ClearBtn.vue'
+import FireQuery from './FireQuery.vue'
+import CopyQuery from './CopyQuery.vue'
+import ClearQuery from './ClearQuery.vue'
 
 export default {
-  name: 'QueryBtn',
+  name: 'NewQuery',
   data: () => ({
     sheet: false,
     loading: false,
     queryText: ''
   }),
   components: {
-    FireBtn,
-    CopyBtn,
-    ClearBtn
+    FireQuery,
+    CopyQuery,
+    ClearQuery
   },
   methods: {
     onEnterPress ({ shiftKey }) {

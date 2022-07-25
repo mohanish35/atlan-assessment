@@ -41,10 +41,13 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    applyQuery({ dispatch, commit }, { query }) {
+    applyQuery({ dispatch, state, commit }, { query }) {
       saveQueryToLocalStorage(query)
       dispatch("setRandomItems")
-      commit(TOGGLE_QUERY_APPLIED)
+
+      if (!state.queryApplied)
+        commit(TOGGLE_QUERY_APPLIED)
+      
       commit(SYNC_QUERY_HISTORY)
     },
     resetAppliedQuery({ commit, state }) {

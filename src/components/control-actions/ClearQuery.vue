@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'ClearBtn',
+  name: 'ClearQuery',
   props: {
     queryText: {
       default: ''
