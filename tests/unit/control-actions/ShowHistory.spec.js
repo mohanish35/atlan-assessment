@@ -10,16 +10,20 @@ const queryHistory = getQueryHistory()
 const headers = getHeaders(3)
 
 describe('ShowHistory.vue', () => {
-  let wrapper;
+  let wrapper
+  let store
 
   beforeEach(() => {
     const localVue = createLocalVue();
     localVue.use(Vuex)
 
-    const store = new Vuex.Store({
+    store = new Vuex.Store({
       state: {
         queryHistory
       },
+      mutations: {
+        SYNC_QUERY_HISTORY: (state, { queryHistory }) => state.queryHistory = queryHistory
+      }
     })
 
     const vuetify = new Vuetify();
@@ -51,6 +55,14 @@ describe('ShowHistory.vue', () => {
     expect(wrapper.find('[data-testid="show-history"]').exists()).toBe(true);
   });
 
+  // it.todo('should have Show History button disabled when queryHistory is empty', async () => {
+  //   const showHistoryButton = wrapper.find('[data-testid="show-history"]')
+
+  //   store.commit('SYNC_QUERY_HISTORY', { queryHistory: [] })
+  //   expect(store.state.queryHistory).toEqual([])
+  //   expect(showHistoryButton.attributes().disabled).toBe(true)
+  // })
+
   it('should open History Query Table on clicking Show History', async () => {
     await wrapper.find('[data-testid="show-history"]').trigger('click')
     
@@ -58,7 +70,18 @@ describe('ShowHistory.vue', () => {
     expect(wrapper.find('[data-testid="historical-query-table"]').exists()).toBe(true);
   });
 
-  // it('should contain all the columns in Query History Table', async () => {
+  it('should close History Query Table on clicking close button', async () => {
+    await wrapper.find('[data-testid="show-history"]').trigger('click')
+    expect(wrapper.find('[data-testid="historical-query-table"]').exists()).toBe(true);
+
+    await wrapper.find('[data-testid="close-show-history"]').trigger('click')
+    setTimeout(() => {
+      expect(wrapper.find('[data-testid="historical-query-table"]').exists()).toBe(false);
+    })
+  });
+
+  // Note: columns render correctly when the component is directly rendered instead of nesting it in the app
+  // it.todo('should contain all the columns in Query History Table', async () => {
   //   await wrapper.find('[data-testid="show-history"]').trigger('click')
   //   expect(wrapper.find('[data-testid="historical-query-table"]').exists()).toBe(true);
 

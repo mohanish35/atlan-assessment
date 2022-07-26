@@ -42,7 +42,7 @@
                     <HistoryActionsContainer 
                       :query="query" 
                       @query-copied="closeDialogBox" 
-                      @fire-query="closeDialogBox" 
+                      @fire-query="closeDialogBox"
                     />
                   </td>
                 </tr>
@@ -63,6 +63,7 @@
             color="blue darken-1" 
             text 
             @click="closeDialogBox"
+            data-testid="close-show-history"
           >
             Close
           </VBtn>

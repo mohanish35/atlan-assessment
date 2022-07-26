@@ -36,8 +36,8 @@ const store = new Vuex.Store({
     [TOGGLE_QUERY_APPLIED]: (state) => {
       state.queryApplied = !state.queryApplied
     },
-    [SYNC_QUERY_HISTORY]: (state) => {
-      state.queryHistory = getQueryHistoryFromLocalStorage()
+    [SYNC_QUERY_HISTORY]: (state, { queryHistory = getQueryHistoryFromLocalStorage() }) => {
+      state.queryHistory = queryHistory
     },
   },
   actions: {
@@ -48,7 +48,7 @@ const store = new Vuex.Store({
       if (!state.queryApplied)
         commit(TOGGLE_QUERY_APPLIED)
       
-      commit(SYNC_QUERY_HISTORY)
+      commit(SYNC_QUERY_HISTORY, {})
     },
     resetAppliedQuery({ commit, state }) {
       commit(TOGGLE_QUERY_APPLIED)
@@ -56,7 +56,7 @@ const store = new Vuex.Store({
     },
     deleteQueryFromHistory({ commit }, { id }) {
       deleteQueryFromLocalStorage(id)
-      commit(SYNC_QUERY_HISTORY)
+      commit(SYNC_QUERY_HISTORY, {})
     },
     setRandomItems({ commit, state }) {
       const resultantItems = []
@@ -78,6 +78,6 @@ const store = new Vuex.Store({
 
 
 store.commit(SET_ITEMS, { items: pokemonJsonData, areDefaultItems: true })
-store.commit(SYNC_QUERY_HISTORY)
+store.commit(SYNC_QUERY_HISTORY, {})
 
 export default store
