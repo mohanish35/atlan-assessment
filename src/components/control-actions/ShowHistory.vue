@@ -6,12 +6,13 @@
           :disabled="!queryHistory.length" 
           v-bind="attrs" 
           v-on="on"
+          data-testid="show-history"
         >
           Show History
           <VIcon right dark v-text="'mdi-history'" />
         </VBtn>
       </template>
-      <VCard>
+      <VCard data-testid="historical-query-table">
         <VCardTitle>History</VCardTitle>
         <VDivider></VDivider>
         <VCardText style="height: 300px;">

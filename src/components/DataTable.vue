@@ -18,6 +18,7 @@
       </VRow>
     </VCardTitle>
     <VDataTable
+      data-testid="data-table"
       :headers="getHeadersWithFilterRestrictions"
       :items="itemsToDisplay"
       :items-per-page="10"
@@ -36,7 +37,7 @@ export default {
     search: '',
     filterableHeaders: ['Name', 'Type 1', 'Type 2']
   }),
-  computed:{
+  computed: {
     getHeadersWithFilterRestrictions () {
       return this.headers.map(header => {
         if (!this.filterableHeaders.includes(header.value)) {

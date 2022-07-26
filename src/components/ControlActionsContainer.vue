@@ -2,16 +2,16 @@
   <div class="pb-8 control-btn">
     <VRow dense>
       <VCol style='flex-grow: 0'>
-        <NewQuery />
+        <NewQuery data-testid="new-query" />
       </VCol>
       <VCol style='flex-grow: 0'>
-        <DownloadTable />
+        <DownloadTable data-testid="download-table" />
       </VCol>
       <VCol>
-        <ShowHistory />
+        <ShowHistory data-testid="show-history" />
       </VCol>
       <VCol align="end">
-        <ResetQuery />
+        <ResetQuery data-testid="reset-query" />
       </VCol>
     </VRow>
   </div>

@@ -3,14 +3,22 @@
     <VCol class='control-col'>
       <FireHistoricalQuery 
         :query-text="query.text" 
-        @fire-query="$emit('fire-query')" 
+        @fire-query="fireQuery" 
+        data-testid="fire-historical-query"
       />
     </VCol>
     <VCol class='control-col'>
-      <CopyHistoricalQuery @query-copied="$emit('query-copied')" :query-text="query.text" />
+      <CopyHistoricalQuery
+        data-testid="copy-historical-query"
+        @query-copied="$emit('query-copied')" 
+        :query-text="query.text" 
+      />
     </VCol>
     <VCol class='control-col'>
-      <DeleteHistoricalQuery :query="query" />
+      <DeleteHistoricalQuery
+        data-testid="delete-historical-query"
+        :query="query" 
+      />
     </VCol>
   </VRow>
 </template>
@@ -23,9 +31,14 @@ import DeleteHistoricalQuery from "./history-actions/DeleteHistoricalQuery.vue";
 export default {
   name: "HistoryActionsContainer",
   components: { FireHistoricalQuery, CopyHistoricalQuery, DeleteHistoricalQuery },
+  methods: {
+    fireQuery () {
+      this.$emit('fire-query')
+    }
+  },
   props: {
     query: {
-      default: {}
+      default: () => ({})
     }
   }
 }
