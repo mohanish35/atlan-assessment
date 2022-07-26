@@ -2,7 +2,11 @@
   <div justify="center">
     <VDialog v-model="dialog" scrollable max-width="900px">
       <template v-slot:activator="{ on, attrs }">
-        <VBtn color="purple white--text" v-bind="attrs" v-on="on">
+        <VBtn color="purple white--text" 
+          :disabled="!queryHistory.length" 
+          v-bind="attrs" 
+          v-on="on"
+        >
           Show History
           <VIcon right dark v-text="'mdi-history'" />
         </VBtn>
@@ -11,30 +15,54 @@
         <VCardTitle>History</VCardTitle>
         <VDivider></VDivider>
         <VCardText style="height: 300px;">
-          <VSimpleTable dense>
+          <VSimpleTable v-if="queryHistory.length" dense>
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th v-for="header in headers" :key="header" class="text-left">
+                  <th 
+                    v-for="header in headers" 
+                    :key="header" 
+                    class="text-left"
+                  >
                     {{ header }}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="query in queryHistory" :key="query.executedAt">
-                  <td>{{ query.text }}</td>
+                <tr 
+                  v-for="query in queryHistory" 
+                  :key="query.executedAt"
+                >
+                  <td>
+                    {{ query.text }}
+                  </td>
                   <td>{{ query.executedAt }}</td>
                   <td>
-                    <HistoryActionsContainer :query="query" @query-copied="closeDialogBox" @fire-query="closeDialogBox" />
+                    <HistoryActionsContainer 
+                      :query="query" 
+                      @query-copied="closeDialogBox" 
+                      @fire-query="closeDialogBox" 
+                    />
                   </td>
                 </tr>
               </tbody>
             </template>
           </VSimpleTable>
+          <div 
+            v-else 
+            class="text-h3 mt-12 text-center" 
+            align-center
+          >
+            Why so empty? Fire some queries!
+          </div>
         </VCardText>
         <VDivider></VDivider>
         <VCardActions>
-          <VBtn color="blue darken-1" text @click="closeDialogBox">
+          <VBtn 
+            color="blue darken-1" 
+            text 
+            @click="closeDialogBox"
+          >
             Close
           </VBtn>
         </VCardActions>
