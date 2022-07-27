@@ -8,9 +8,13 @@ The user is a empowered to query the table, as well as export and download the q
 
 
 ## Project setup
+### Install NPM packages
 ```
 yarn install
 ```
+
+### Environment Variables
+Copy the ```.env.example``` (from the root dir) and paste it (in the root dir). Rename the copied file to ```.env``` and poopulate the variables.
 
 ### Compiles and hot-reloads for development
 ```
