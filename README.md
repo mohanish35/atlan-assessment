@@ -21,6 +21,11 @@ Copy the ```.env.example``` (from the root dir) and paste it (in the root dir). 
 yarn serve
 ```
 
+### Run unit tests
+```
+yarn test:unit
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
