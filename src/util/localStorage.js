@@ -2,6 +2,7 @@ import ls from "local-storage"
 import { getCurrentDateTime, getCurrentDateTimeUtc } from "./timeHelpers"
 
 const QUERY_HISTORY = "query-history"
+const ITEMS = "items"
 
 export const saveQueryToLocalStorage = (query) => {
   const queryHistory = getQueryHistoryFromLocalStorage()
@@ -31,4 +32,13 @@ export const deleteQueryFromLocalStorage = (id) => {
   }
 
   ls(QUERY_HISTORY, JSON.stringify(queryHistory))
+}
+
+export const getItemsFromLocalStorage = () => {
+  const items = ls(ITEMS) 
+  return items === "undefined" ? null : items
+}
+
+export const setItemsToLocalStorage = (items) => {
+  ls(ITEMS, items)
 }

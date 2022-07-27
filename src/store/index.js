@@ -12,7 +12,11 @@ import {
   SYNC_QUERY_HISTORY,
 } from "./mutation-types"
 import { extractHeadersFromJson } from "../util/parsers"
-import { getQueryHistoryFromLocalStorage } from "../util/localStorage"
+import {
+  getQueryHistoryFromLocalStorage,
+  getItemsFromLocalStorage,
+  setItemsToLocalStorage,
+} from "../util/localStorage"
 
 Vue.use(Vuex)
 
@@ -47,8 +51,16 @@ const store = new Vuex.Store({
   },
   actions: {
     async fetchItems({ commit }) {
-      const { data } = await axios.get(VUE_APP_ITEMS_URL)
-      commit(SET_ITEMS, { items: data, areDefaultItems: true })
+      let itemsInLocalStorage = getItemsFromLocalStorage()
+
+      if (!itemsInLocalStorage || !itemsInLocalStorage.length) {
+        const { data } = await axios.get(VUE_APP_ITEMS_URL)
+        
+        setItemsToLocalStorage(data)
+        itemsInLocalStorage = data
+      }
+
+      commit(SET_ITEMS, { items: itemsInLocalStorage, areDefaultItems: true })
     },
     applyQuery({ dispatch, state, commit }, { query }) {
       saveQueryToLocalStorage(query)
