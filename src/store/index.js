@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import axios from "axios"
 
 import {
   saveQueryToLocalStorage,
@@ -12,9 +13,10 @@ import {
 } from "./mutation-types"
 import { extractHeadersFromJson } from "../util/parsers"
 import { getQueryHistoryFromLocalStorage } from "../util/localStorage"
-import pokemonJsonData from "../assets/data-source/pokemon"
 
 Vue.use(Vuex)
+
+const { VUE_APP_ITEMS_URL } = process.env
 
 const store = new Vuex.Store({
   state: {
@@ -36,18 +38,24 @@ const store = new Vuex.Store({
     [TOGGLE_QUERY_APPLIED]: (state) => {
       state.queryApplied = !state.queryApplied
     },
-    [SYNC_QUERY_HISTORY]: (state, { queryHistory = getQueryHistoryFromLocalStorage() }) => {
+    [SYNC_QUERY_HISTORY]: (
+      state,
+      { queryHistory = getQueryHistoryFromLocalStorage() }
+    ) => {
       state.queryHistory = queryHistory
     },
   },
   actions: {
+    async fetchItems({ commit }) {
+      const { data } = await axios.get(VUE_APP_ITEMS_URL)
+      commit(SET_ITEMS, { items: data, areDefaultItems: true })
+    },
     applyQuery({ dispatch, state, commit }, { query }) {
       saveQueryToLocalStorage(query)
       dispatch("setRandomItems")
 
-      if (!state.queryApplied)
-        commit(TOGGLE_QUERY_APPLIED)
-      
+      if (!state.queryApplied) commit(TOGGLE_QUERY_APPLIED)
+
       commit(SYNC_QUERY_HISTORY, {})
     },
     resetAppliedQuery({ commit, state }) {
@@ -75,9 +83,7 @@ const store = new Vuex.Store({
   },
 })
 
-
-
-store.commit(SET_ITEMS, { items: pokemonJsonData, areDefaultItems: true })
+store.dispatch("fetchItems")
 store.commit(SYNC_QUERY_HISTORY, {})
 
 export default store

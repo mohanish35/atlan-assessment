@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "copy-to-clipboard": "^3.3.1",
     "core-js": "^3.8.3",
     "json-to-csv-export": "^1.1.0",
