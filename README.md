@@ -2,7 +2,7 @@
 
 The [SQL Query Runner](https://atlan-assessment.vercel.app/) provides the user an exhautive and robust solution to interact with SQL table. 
 
-The user is a empowered to query the table, as well as export and download the queried table in PDF, CSV, and in JSON format. Moreover, the fired queries are persisted in the local storage so refreshing the application doesn't destroy the history.
+The user is empowered to query the table, as well as export and download the queried table in PDF, CSV, and in JSON format. Moreover, the fired queries are persisted in the local storage so refreshing the application doesn't destroy the history.
 
 <img width="1728" alt="Screenshot 2022-07-27 at 11 36 48 AM" src="https://user-images.githubusercontent.com/32039260/181173569-8d8efd6e-fbd5-47e7-aef2-ce55e7dd877f.png">
 
